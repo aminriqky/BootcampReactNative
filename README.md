@@ -1,2 +1,4 @@
-# BootcampReactNative
-Bootcamp Sanbercode React Native Batch Februari 2021
+1. Nama: sanbercode
+2. Email: sanbercode@gmail.com
+3. Akun Gitlab: @sanbercode
+4. Akun Telegram: @sanbercode
