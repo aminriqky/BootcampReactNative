@@ -113,3 +113,28 @@ console.log(shoppingTime('82Ku8Ma742', 170000));
 console.log(shoppingTime('', 2475000)); //Mohon maaf, toko X hanya berlaku untuk member saja
 console.log(shoppingTime('234JdhweRxa53', 15000)); //Mohon maaf, uang tidak cukup
 console.log(shoppingTime()); ////Mohon maaf, toko X hanya berlaku untuk member saja
+
+// Soal No. 3 (Naik Angkot)
+function naikAngkot(arrPenumpang) {
+    rute = ['A', 'B', 'C', 'D', 'E', 'F'];
+    for (var object = 0; object < arrPenumpang.length; object++) {
+        var [nama, mulai, selesai] = arrPenumpang[object];
+        var start = mulai.charCodeAt(0) - 65;
+        var finish = selesai.charCodeAt(0) - 65;
+        var bayar = (finish - start) * 2000;
+        var obj = {
+            penumpang: nama,
+            naikDari: mulai,
+            tujuan: selesai,
+            bayar: bayar
+        }
+        console.log(obj);
+    }
+}
+   
+//TEST CASE
+console.log(naikAngkot([['Dimitri', 'B', 'F'], ['Icha', 'A', 'B']]));
+// [ { penumpang: 'Dimitri', naikDari: 'B', tujuan: 'F', bayar: 8000 },
+//   { penumpang: 'Icha', naikDari: 'A', tujuan: 'B', bayar: 2000 } ]
+ 
+console.log(naikAngkot([])); //[]
