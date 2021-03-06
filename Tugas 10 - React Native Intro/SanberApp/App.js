@@ -1,18 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import LoginScreen from './Tugas/Tugas13/LoginScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './Tugas/Tugas13/LoginScreen';
+import RegisScreen from './Tugas/Tugas13/RegisScreen';
+import AboutScreen from './Tugas/Tugas13/AboutScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <LoginScreen/>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="LoginScreen" component={LoginScreen}/>
+        <Stack.Screen name="RegisScreen" component={RegisScreen}/>
+        <Stack.Screen name="AboutScreen" component={AboutScreen}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    color: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
