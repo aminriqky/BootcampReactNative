@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Telegram from './Tugas/Tugas12/Telegram'
+import LoginScreen from './Tugas/Tugas13/LoginScreen'
 
 export default function App() {
   return (
-    <Telegram/>
+    <LoginScreen/>
   );
 }
 
