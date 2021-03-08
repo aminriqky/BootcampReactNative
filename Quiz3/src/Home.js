@@ -5,7 +5,7 @@ import { Data }from './data'
 
 const Item = ({ title, harga, type, image }) => (
     <View style={{alignItems: 'center', margin: 20}}>
-    <TouchableOpacity style={{marginTop: 20, backgroundColor: 'skyblue', width: 160}}>
+    <TouchableOpacity style={{marginTop: 20, width: 160, borderWidth: 1, borderRadius: 5}}>
         <Text style={{alignSelf: 'center'}}>{title}</Text>
         <Image style={{width: 'auto', height: 100}} source={image}/>
         <Text style={{alignSelf: 'center'}}>{harga}</Text>

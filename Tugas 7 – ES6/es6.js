@@ -49,3 +49,22 @@ let before = `Lorem ${view} dolor sit amet,
  
 // Driver Code
 console.log(before) 
+
+var array = ["123", "456", "#123", "23", "231", "267"];
+
+console.log(array.filter(function(item){
+    var finder = '2';
+    return eval('/'+finder+'/').test(item);
+}));
+
+const daftarHobi = ['Olahraga', 'Makan', 'Ngoding']
+let hobiFavorit
+for (const hobi of daftarHobi) {
+    hobiFavorit = hobi
+}
+
+console.log(hobiFavorit);
+
+for (var i=1; i <= 20; i+=2) {
+    console.log(i);
+}
