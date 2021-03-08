@@ -1,7 +1,18 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { StyleSheet, Text, View, Image, Button, FlatList } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native'
 import { Data }from './data'
+
+const Item = ({ title, harga, type, image }) => (
+    <View style={{alignItems: 'center', margin: 20}}>
+    <TouchableOpacity style={{marginTop: 20, backgroundColor: 'skyblue', width: 160}}>
+        <Text style={{alignSelf: 'center'}}>{title}</Text>
+        <Image style={{width: 'auto', height: 100}} source={image}/>
+        <Text style={{alignSelf: 'center'}}>{harga}</Text>
+        <Text style={{alignSelf: 'center'}}>{type}</Text>
+    </TouchableOpacity>
+    </View>
+);
 
 export default function Home({route, navigation}) {
     const { username } = route.params;
@@ -21,6 +32,10 @@ export default function Home({route, navigation}) {
         //? agar harga dapat update misal di tambah lebih dari 1 item atau lebih -->
     }
 
+    const renderItem = ({ item }) => (
+        <Item title={item.title} harga={item.harga} type={item.type} image={item.image}/>
+    );
+
     return (
         <View style={styles.container}>
             <View style={{flexDirection:'row', justifyContent:"space-between", padding: 16}}>
@@ -33,7 +48,7 @@ export default function Home({route, navigation}) {
                     <Text style={{fontSize:18, fontWeight:'bold'}}> {currencyFormat(totalPrice)}</Text>
                 </View>
             </View>
-            <View style={{alignItems:'center',  marginBottom: 20, paddingBottom: 60, flexDirection: 'row'}}>
+            <View style={{marginBottom: 20, paddingBottom: 60}}>
             {/* //? #Soal No 2 (15 poin) -- Home.js -- Function Home
             //? Buatlah 1 komponen FlatList dengan input berasal dari data.js   
             //? dan memiliki 2 kolom, sehingga menampilkan 2 item per baris (horizontal) -->
@@ -42,18 +57,8 @@ export default function Home({route, navigation}) {
              //? Buatlah styling komponen Flatlist, agar dapat tampil dengan baik di device untuk layouting bebas  --> */
             <FlatList
                 data={ Data }
-                renderItem={({item})=>{
-                    return(
-                        <>
-                        <View style={{width: 180, height: 180, backgroundColor: 'skyblue', flexDirection: 'column', marginTop: 20, marginLeft: 20}}>
-                            <Text style={{alignSelf: 'center'}}>{item.title}</Text>
-                            <Image style={{width: 'auto', height: 100}} source={item.image}/>
-                            <Text style={{alignSelf: 'center'}}>{item.harga}</Text>
-                            <Text style={{alignSelf: 'center'}}>{item.type}</Text>
-                        </View>
-                        </>
-                    )
-                }}
+                renderItem={renderItem}
+                numColumns={2}
                 keyExtractor={item => item.id}
             />
              }
