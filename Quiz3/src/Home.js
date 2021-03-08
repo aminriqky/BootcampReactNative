@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Button } from 'react-native'
 import { Data }from './data'
 
-const Item = ({ title, harga, type, image }) => (
+const Item = ({ title, harga, type, image, updateHarga }) => (
     <View style={{alignItems: 'center', margin: 20}}>
-    <TouchableOpacity style={{marginTop: 20, width: 160, borderWidth: 1, borderRadius: 5}}>
+    <View style={{marginTop: 20, width: 160, borderWidth: 1, borderRadius: 5}}>
         <Text style={{alignSelf: 'center'}}>{title}</Text>
         <Image style={{width: 'auto', height: 100}} source={image}/>
         <Text style={{alignSelf: 'center'}}>{harga}</Text>
         <Text style={{alignSelf: 'center'}}>{type}</Text>
-    </TouchableOpacity>
+        <Button title="BELI" onPress={()=>updateHarga(harga)}/>
+    </View>
     </View>
 );
 
@@ -23,7 +24,7 @@ export default function Home({route, navigation}) {
     };
 
     const updateHarga =(price)=>{
-        console.log("UpdatPrice : " + price);
+        console.log("UpdatePrice : " + price);
         const temp = Number(price) + totalPrice;
         console.log(temp)
         setTotalPrice(temp)
@@ -33,7 +34,7 @@ export default function Home({route, navigation}) {
     }
 
     const renderItem = ({ item }) => (
-        <Item title={item.title} harga={item.harga} type={item.type} image={item.image}/>
+        <Item title={item.title} harga={item.harga} type={item.type} image={item.image} updateHarga={updateHarga}/>
     );
 
     return (
